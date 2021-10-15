@@ -1,5 +1,4 @@
-module visitor
+module forth
 
-go 1.14
+go 1.17
 
-require github.com/go-rod/rod v0.49.3

@@ -5,14 +5,25 @@ import (
 )
 
 func main() {
-	//fmt.Println("Forth programing language, writen in go")
-	//num := os.Args
+	fmt.Println("wilcome in forth programing languete")
 
-	t := 20
-	for i := 0; i < 10; i++ {
-		t += ((t / 100) * 20) + 20
+	var input string
+
+	for {
+
+		fmt.Print("> ")
+		_, err := fmt.Scanf("%s", &input)
+
+		if err != nil {
+			fmt.Println("my error is : ", err)
+		}
+
+		fmt.Println(input)
+		if input == "quit" {
+			fmt.Println("bye")
+			return
+		}
+
 	}
-
-	fmt.Println(t)
 
 }

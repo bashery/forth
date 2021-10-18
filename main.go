@@ -5,17 +5,17 @@ import (
 )
 
 func main() {
-	fmt.Println("wilcome in forth programing languete")
+	fmt.Println("wilcome in forth programing languete\n")
 
 	var input string
 
 	for {
 
 		fmt.Print("> ")
-		_, err := fmt.Scanf("%s", &input)
+		fmt.Scanf("%s", &input)
 
-		if err != nil {
-			fmt.Println("my error is : ", err)
+		if input == "duble" {
+			input = input + input
 		}
 
 		fmt.Println(input)
@@ -25,5 +25,4 @@ func main() {
 		}
 
 	}
-
 }

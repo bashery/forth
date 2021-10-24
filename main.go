@@ -8,11 +8,40 @@ import (
 )
 
 func main() {
-	fmt.Println("wilcome in forth programing languete\n")
-
+	fmt.Println("wilcome in forth programing languege\nversion: 0.0.1")
 	scanner := bufio.NewScanner(os.Stdin)
-	var text string
+	scanr := blocCode(scanner)
+	if err := scanr.Err(); err != nil {
+		fmt.Fprintln(os.Stderr, "reading standard input:", err)
+	}
 
+}
+
+func blocCode(scanner *bufio.Scanner) *bufio.Scanner {
+	var text string
+	for scanner.Scan() {
+		line := scanner.Text()
+		quit := strings.Contains(line, "quit")
+		colon := strings.HasSuffix(line, ";")
+
+		text += "\n" + line
+		if colon {
+			fmt.Println(text, "\n")
+			text = ""
+		}
+
+		if quit {
+			fmt.Println("bye")
+			return nil
+		}
+
+		//fmt.Println(text) // Println will add back the final '\n'
+	}
+
+	return scanner
+}
+
+/*
 	for scanner.Scan() {
 		line := scanner.Text()
 		quit := strings.Contains(line, "quit")
@@ -31,8 +60,4 @@ func main() {
 
 		//fmt.Println(text) // Println will add back the final '\n'
 	}
-	if err := scanner.Err(); err != nil {
-		fmt.Fprintln(os.Stderr, "reading standard input:", err)
-	}
-
-}
+*/

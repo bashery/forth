@@ -9,6 +9,7 @@ import (
 
 func main() {
 	fmt.Println("wilcome in forth programing languege\nversion: 0.0.1")
+
 	scanner := bufio.NewScanner(os.Stdin)
 	scanr := blocCode(scanner)
 	if err := scanr.Err(); err != nil {
@@ -22,11 +23,12 @@ func blocCode(scanner *bufio.Scanner) *bufio.Scanner {
 	for scanner.Scan() {
 		line := scanner.Text()
 		quit := strings.Contains(line, "quit")
-		colon := strings.HasSuffix(line, ";")
+		//colon := strings.HasSuffix(line, ";")
 
 		text += "\n" + line
-		if colon {
-			fmt.Println(text, "\n")
+
+		if strings.HasSuffix(line, ";") {
+			fmt.Println(text)
 			text = ""
 		}
 
@@ -35,7 +37,7 @@ func blocCode(scanner *bufio.Scanner) *bufio.Scanner {
 			return nil
 		}
 
-		//fmt.Println(text) // Println will add back the final '\n'
+		fmt.Println(text) // Println will add back the final '\n'
 	}
 
 	return scanner
